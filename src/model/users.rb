@@ -8,7 +8,11 @@
 require 'sequel'
 Sequel::Model.plugin(:schema)
 
-Sequel.connect("sqlite://users.db")
+DB = Sequel.connect("sqlite://users.db")
+
+def total_price
+  DB[:users].count
+end
 
 class Users < Sequel::Model
   unless table_exists?
@@ -20,4 +24,13 @@ class Users < Sequel::Model
     end
     create_table
   end
+
+  def self.total_price
+    dataset.sum(:price)
+  end
+
+  def self.total_count
+    dataset.count
+  end
+
 end

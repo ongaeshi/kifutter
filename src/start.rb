@@ -13,14 +13,19 @@ get '/style.css' do
 end
 
 get '/' do
+  @total_price = Users.total_price
+  @total_count = Users.total_count
   haml :index
 end
 
 get '/create_dummy_data' do
-  Users.create({
-    :name => 'ongaeshi',
-    :message => '100円寄付したよ！',
-    :price => 10233,
-  })
+  (1...100000).each do
+    Users.create({
+                   :name => 'ongaeshi',
+                   :message => '100円寄付したよ！',
+                   :price => 10233,
+                 })
+  end
+
   redirect '/'
 end
