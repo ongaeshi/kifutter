@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 require 'rubygems'
 require 'sinatra'
-require 'model/comment.rb'
+require 'model/users.rb'
 
 helpers do
   include Rack::Utils; alias_method :h, :escape_html
@@ -12,23 +13,14 @@ get '/style.css' do
 end
 
 get '/' do
-  @comments = Comments.order_by(:posted_date.desc)
   haml :index
 end
 
-put '/comment' do
-  Comments.create({
-    :name => request[:name],
-    :title => request[:title],
-    :message => request[:message],
-    :posted_date => Time.now,
+get '/create_dummy_data' do
+  Users.create({
+    :name => 'ongaeshi',
+    :message => '100円寄付したよ！',
+    :price => 10233,
   })
   redirect '/'
 end
-
-get '/delete' do
-  p params
-  Comments.filter(:id => params[:id]).delete
-  redirect '/'
-end
-
