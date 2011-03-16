@@ -73,6 +73,14 @@ body {
   border-top: 1px solid #cccccc;
 }
 
+#footer_title {
+  font-size: 20px;
+}
+
+#developer {
+  font-size: 10px;
+}
+
 /* ---------------------------------------- #header内の指定 */
 
 /* -- 見出しレベル1 -- */
