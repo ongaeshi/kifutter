@@ -7,7 +7,7 @@ helpers do
   include Rack::Utils; alias_method :h, :escape_html
 end
 
-get '/style.css' do
+get '/kifutter.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :style
 end
