@@ -10,10 +10,6 @@ Sequel::Model.plugin(:schema)
 
 DB = Sequel.connect("sqlite://users.db")
 
-def total_price
-  DB[:users].count
-end
-
 class Users < Sequel::Model
   unless table_exists?
     set_schema do
