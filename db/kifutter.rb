@@ -11,7 +11,7 @@ require 'logger'
 module Kifutter
   DB_NAME = 'db/kifutter.db'
 
-  Sequel.connect("sqlite://#{DB_NAME}", :loggers => [Logger.new('log/kifutter.log')])
+  Sequel.connect("sqlite://#{DB_NAME}", :loggers => [Logger.new('log/kifutter.log', 5)])
 
   class User < Sequel::Model
     one_to_many :tweets

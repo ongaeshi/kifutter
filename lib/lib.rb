@@ -5,13 +5,21 @@
 # @author ongaeshi
 # @date   2011/03/25
 
+require 'nkf'
+
 module Kifutter
+  def zensuji_to_han(s)
+    return NKF::nkf( '-Wwxm0Z0', s )
+  end
+
   def parse_price(text)
-    rand(10000)
+    text = zensuji_to_han(text)
+    text =~ /(\d+)円/
+    $1.to_i
   end
 
   def parse_url(text)
-    'http://www.jrc.or.jp/'
+    ''
   end
 end
 

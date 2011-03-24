@@ -28,8 +28,8 @@ module Kifutter
     end
     
     def start
-      TwitterStream.new({:username => @username, :password => @password}).sample do |status|
-      # TwitterStream.new({:username => @username, :password => @password}).follow([266062941]) do |status|
+      # TwitterStream.new({:username => @username, :password => @password}).sample do |status|
+      TwitterStream.new({:username => @username, :password => @password}).follow([266062941]) do |status|
         next unless status['text']
 
         # ユーザー
