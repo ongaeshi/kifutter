@@ -3,9 +3,13 @@
 
 %html
   %head
-    %title SinatBBS
+    %title 寄付ったー - Twitterユーザーの募金総額をまとめて表示
     %meta{:"http-equiv"=>"Content-Type", :content=>"text/html", :charset=>"utf-8"}
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/style.css"}
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/kifutter.css"}
+
   %body
-    %h1 SinatBBS
-    != yield
+    %div#wrapper
+      %div#header
+        %h1 寄付ったー
+      != yield

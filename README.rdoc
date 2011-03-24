@@ -1,6 +1,6 @@
-= SinatBBS
+= kifutter
 
-Sinatraで作った掲示板アプリケーションです。
+みんなのつぶやきを集計して、Twitter上の募金総額を計算するよ
 
 == 依存ライブラリ
 
@@ -8,10 +8,24 @@ Sinatraで作った掲示板アプリケーションです。
 * Haml
 * Sequel
 * sqlite3-ruby
+* twitterstream
 
 == 起動方法
 
-  $ sudo gem install sinatra haml sequel sqlite3-ruby
+=== setup
+
+  $ sudo gem install 依存ライブラリ
+
+=== Create a db.
+
+  $ sequel -m db/migration sqlite://db/kifutter.db
+
+=== Start twitter watch.
+
+  $ ruby watcher.db
+
+=== Start web app.
+
   $ ruby start.rb
 
 http://localhost:4567/

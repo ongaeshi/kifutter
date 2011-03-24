@@ -1,34 +1,16 @@
+# -*- coding: utf-8 -*-
 require 'rubygems'
 require 'sinatra'
-require 'model/comment.rb'
+require File.join(File.dirname(__FILE__), "db/kifutter")
+include Kifutter
 
 helpers do
   include Rack::Utils; alias_method :h, :escape_html
 end
 
-get '/style.css' do
-  content_type 'text/css', :charset => 'utf-8'
-  sass :style
-end
-
 get '/' do
-  @comments = Comments.order_by(:posted_date.desc)
+  @total_price = Tweet.sum_price
+  @total_count = Tweet.count
+  @user_count = User.count
   haml :index
 end
-
-put '/comment' do
-  Comments.create({
-    :name => request[:name],
-    :title => request[:title],
-    :message => request[:message],
-    :posted_date => Time.now,
-  })
-  redirect '/'
-end
-
-get '/delete' do
-  p params
-  Comments.filter(:id => params[:id]).delete
-  redirect '/'
-end
-

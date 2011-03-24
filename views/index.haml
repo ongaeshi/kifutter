@@ -1,30 +1,30 @@
-%form{:method => "POST", :action => '/comment'}
-  %input{:type => "hidden", :name => "_method", :value => "PUT"}
-  %table
-    %tr
-      %td 名前
-      %td 
-        %input{:type => "text", :name => "name"}
-    %tr
-      %td タイトル
-      %td
-        %input{:type => "text", :name => "title"}
-    %tr
-      %td 内容
-      %td
-        %textarea{:name => "message", :cols => 60, :rows => 8}
-    %tr
-      %td
-      %td
-        %input{:type => "submit"}
+%div#contents
+  %div#total
+    %p #{@total_price} 円が
+    %p #{@total_count} 口の寄付で集まってるよ。
+    %p #{@user_count} 人のユーザーが参加中！
 
-- @comments.each do |comment|
-  .comment
-    %h2== #{h comment.id} #{(comment.title != "") ? (h comment.title) : 'タイトル無し'} 
-    .info
-      %span.name== by #{(comment.name.empty?) ? '名無しさん' : (h comment.name)}
-      %span.date== (#{h comment.date})
-      %a{:href => "/delete?id=#{comment.id}"} コメントを削除
+  %h2 使い方
 
-    .message
-      = comment.formatted_message
+  %ol
+    %li 寄付する
+    %li <a href='http://twitter.com/kifutter_jp'>@kifutter_jp</a>に教えてね、URLは無くてもいいよ
+    %div.example <a href='http://twitter.com/kifutter_jp'>@kifutter_jp</a> ○○で<b class="s">xxx円</b>募金したよ <b class="s">http://募金先のURL</b>
+    %li みんなのつぶやきを集計して、上の募金額に追加するよ
+
+  %h2 こんな感じで書いてね
+
+  %div.example <a href='http://twitter.com/kifutter_jp'>@kifutter_jp</a> Yahoo!!で100円募金したよ
+  %div.example <a href='http://twitter.com/kifutter_jp'>@kifutter_jp</a> 思い切って1000円入れてみた！！ <a href='http://bit.ly/eCJ38H'>http://bit.ly/eCJ38H</a>
+  %div 何回投稿してもOKだよ。
+
+  %h2 最近の寄付
+
+  %p <a href="http://search.twitter.com/search?q=%40kifutter_jp">@kifutter_jp - Twitter Search</a>
+
+%div#footer
+  %div#footer_title kifutter
+  %div#developer develop by ongaeshi
+  %p <a href='http://twitter.com/kifutter_jp'>Twitter</a>
+  %p <a href='https://github.com/ongaeshi/kifutter'>github</a>
+  %p ページデザイン募集中
