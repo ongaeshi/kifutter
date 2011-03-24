@@ -10,22 +10,10 @@ require 'twitterstream'
 require 'sequel'
 require 'logger'
 require File.join(File.dirname(__FILE__), "lib")
+require File.join(File.dirname(__FILE__), "model/kifutter")
 include Kifutter
 
 module Kifutter
-  DB_NAME = 'kifutter.db'
-
-  # --- setup database
-  DB = Sequel.connect("sqlite://#{DB_NAME}")
-
-  class User < Sequel::Model
-    one_to_many :tweets
-  end
-
-  class Tweet < Sequel::Model
-    many_to_one :user
-  end
-
   class Watcher
     def self.exec
       data = Marshal.load(open('test.db'))
@@ -72,4 +60,6 @@ module Kifutter
   end
 end
 
-Kifutter::Watcher.exec
+if __FILE__ == $0
+  Kifutter::Watcher.exec
+end
