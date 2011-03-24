@@ -11,6 +11,10 @@
   padding: 0.2em;
 }
 
+.s {
+  color: rgb(27.8%, 58.8%, 83.9%);
+}
+
 a:link {
   text-decoration: none;
 }

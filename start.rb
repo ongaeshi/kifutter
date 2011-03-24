@@ -11,5 +11,6 @@ end
 get '/' do
   @total_price = Tweet.sum_price
   @total_count = Tweet.count
+  @user_count = User.count
   haml :index
 end
