@@ -13,7 +13,9 @@ Sequel.migration do
       foreign_key :user_id, :users
       Bignum :tw_id, :unique => true
       String :text
-      Time :created_at
+      Time   :created_at
+      Bignum :price
+      String :url
     end
   end
 end
