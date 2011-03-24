@@ -9,14 +9,14 @@ require 'rubygems'
 require 'twitterstream'
 require 'sequel'
 require 'logger'
-require File.join(File.dirname(__FILE__), "lib")
-require File.join(File.dirname(__FILE__), "model/kifutter")
+require File.join(File.dirname(__FILE__), "lib/lib")
+require File.join(File.dirname(__FILE__), "db/kifutter")
 include Kifutter
 
 module Kifutter
   class Watcher
     def self.exec
-      data = Marshal.load(open('test.db'))
+      data = Marshal.load(open('db/test.db'))
       Watcher.new(DB_NAME, data[0], data[1], 'log/watcher.log').start
     end
 

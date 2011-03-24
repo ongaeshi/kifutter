@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'rubygems'
 require 'sinatra'
-require File.join(File.dirname(__FILE__), "model/kifutter")
+require File.join(File.dirname(__FILE__), "db/kifutter")
 include Kifutter
 
 helpers do
