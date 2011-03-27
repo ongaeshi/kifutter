@@ -9,6 +9,7 @@ require 'rubygems'
 require 'twitterstream'
 require 'sequel'
 require 'logger'
+require 'lib/init'
 require 'lib/lib'
 require 'db/kifutter'
 include Kifutter
@@ -17,11 +18,10 @@ module Kifutter
   class Watcher
     def self.exec
       data = Marshal.load(open(TEST_DB))
-      Watcher.new(DB_NAME, data[0], data[1], LOG_NAME).start
+      Watcher.new(data[0], data[1], Kifutter::log_file('watcher.log')).start
     end
 
-    def initialize(db_name, username, password, log_file)
-      @db_name = db_name
+    def initialize(username, password, log_file)
       @username = username
       @password = password
       @log = Logger.new(log_file)
@@ -53,7 +53,7 @@ module Kifutter
         
         # 定期的にデバッグ表示
         if (Tweet.count % 100 == 0)
-          @log.info "#{Time.now.strftime("%Y/%m/%d %H:%M:%S")} #{Tweet.count} tweets #{File.size? @db_name} byte"
+          @log.info "#{Time.now.strftime("%Y/%m/%d %H:%M:%S")} #{Tweet.count} tweets"
         end
       end
     end
