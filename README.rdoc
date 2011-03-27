@@ -22,7 +22,7 @@
 
 === Start twitter watch.
 
-  $ ruby watcher.db
+  $ ruby watcher.rb
 
 === Start web app.
 
