@@ -5,19 +5,22 @@
 # @author ongaeshi
 # @date   2011/03/25
 
+#DIR = File.dirname(__FILE__)
+DIR = '/Users/ongaeshi/Documents/kifutter'
+
 require 'rubygems'
 require 'twitterstream'
 require 'sequel'
 require 'logger'
-require File.join(File.dirname(__FILE__), "lib/lib")
-require File.join(File.dirname(__FILE__), "db/kifutter")
+require File.join(DIR, "lib/lib")
+require File.join(DIR, "db/kifutter")
 include Kifutter
 
 module Kifutter
   class Watcher
     def self.exec
-      data = Marshal.load(open('db/test.db'))
-      Watcher.new(DB_NAME, data[0], data[1], 'log/watcher.log').start
+      data = Marshal.load(open(TEST_DB))
+      Watcher.new(DB_NAME, data[0], data[1], LOG_NAME).start
     end
 
     def initialize(db_name, username, password, log_file)
@@ -63,3 +66,4 @@ end
 if __FILE__ == $0
   Kifutter::Watcher.exec
 end
+

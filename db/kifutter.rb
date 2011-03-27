@@ -9,9 +9,11 @@ require 'sequel'
 require 'logger'
 
 module Kifutter
-  DB_NAME = 'db/kifutter.db'
+  DB_NAME = File.join(DIR, 'db/kifutter.db')
+  LOG_NAME = File.join(DIR, 'log/kifutter.log')
+  TEST_DB = File.join(DIR, 'db/test.db')
 
-  Sequel.connect("sqlite://#{DB_NAME}", :loggers => [Logger.new('log/kifutter.log', 5)])
+  Sequel.connect("sqlite://#{DB_NAME}", :loggers => [Logger.new(LOG_NAME, 5)])
 
   class User < Sequel::Model
     one_to_many :tweets
