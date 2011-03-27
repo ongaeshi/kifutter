@@ -17,7 +17,7 @@ include Kifutter
 module Kifutter
   class Watcher
     def self.exec
-      data = Marshal.load(open(TEST_DB))
+      data = Marshal.load(open(Kifutter::setup_file()))
       Watcher.new(data[0], data[1], Kifutter::log_file('watcher.log')).start
     end
 

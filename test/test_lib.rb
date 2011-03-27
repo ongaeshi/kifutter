@@ -7,7 +7,7 @@
 
 require 'rubygems'
 require 'test/unit'
-require File.join(File.dirname(__FILE__), "../lib/lib")
+require 'lib/lib'
 
 class TestLib < Test::Unit::TestCase
   include Kifutter
