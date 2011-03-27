@@ -24,6 +24,17 @@ module Kifutter
   def self.setup_file
     ENV['SETUP_FILE'] || SETUP_FILE    
   end
+
+  def self.url_root(path = nil)
+    #root = '/'
+    root = '/kifutter'
+
+    if (path)
+      File.join(root, path)
+    else
+      root
+    end
+  end
 end
 
 
