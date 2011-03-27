@@ -12,8 +12,8 @@ helpers do
   alias_method :h, :escape_html
 end
 
-get '/*.css' do
-  scss params[:splat].first.to_sym
+get '*/*.css' do
+  scss params[:splat][1].to_sym
 end
 
 get '/' do
