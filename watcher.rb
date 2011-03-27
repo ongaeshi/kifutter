@@ -5,15 +5,12 @@
 # @author ongaeshi
 # @date   2011/03/25
 
-#DIR = File.dirname(__FILE__)
-DIR = '/Users/ongaeshi/Documents/kifutter'
-
 require 'rubygems'
 require 'twitterstream'
 require 'sequel'
 require 'logger'
-require File.join(DIR, "lib/lib")
-require File.join(DIR, "db/kifutter")
+require 'lib/lib'
+require 'db/kifutter'
 include Kifutter
 
 module Kifutter

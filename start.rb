@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 
-#DIR = File.dirname(__FILE__)
-DIR = '/Users/ongaeshi/Documents/kifutter'
-
 require 'rubygems'
 require 'sinatra'
-require File.join(DIR, "db/kifutter")
+require 'haml'
+require 'db/kifutter'
 include Kifutter
 
 helpers do

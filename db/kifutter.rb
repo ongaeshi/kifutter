@@ -9,9 +9,12 @@ require 'sequel'
 require 'logger'
 
 module Kifutter
+  #DIR = File.dirname(__FILE__)
+  DIR = '/Users/ongaeshi/Documents/kifutter'
+
   DB_NAME = File.join(DIR, 'db/kifutter.db')
-  LOG_NAME = File.join(DIR, 'log/kifutter.log')
   TEST_DB = File.join(DIR, 'db/test.db')
+  LOG_NAME = File.join(DIR, 'log/kifutter.log')
 
   Sequel.connect("sqlite://#{DB_NAME}", :loggers => [Logger.new(LOG_NAME, 5)])
 
