@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
+
 require 'rubygems'
 require 'sinatra'
-require File.join(File.dirname(__FILE__), "db/kifutter")
+require 'haml'
+require 'lib/init'
+require 'db/kifutter'
 include Kifutter
 
 helpers do
-  include Rack::Utils; alias_method :h, :escape_html
+  include Rack::Utils
+  alias_method :h, :escape_html
+end
+
+get '*/*.css' do
+  scss params[:splat][1].to_sym
 end
 
 get '/' do
