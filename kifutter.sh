@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 
-APP_DIR=/Users/ongaeshi/Documents/kifutter
+APP_DIR=/home/ongaeshi/web/kifutter
 APP_NAME=kifutter
 PORT=10000
 ENV=deployment
