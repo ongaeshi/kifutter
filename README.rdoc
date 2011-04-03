@@ -22,11 +22,34 @@
 
 === Start twitter watch.
 
+1. 認証用(kifutter_jpで無くてもよい)のTwitterアカウントのユーザー名、パスワードが入ったsetupファイルをkifutter/以下に作る。
+2. setupファイルの中身はMarshal.dumpした配列。[0]にユーザー名、[1]にパスワードが入っている
+3. で、スクリプト起動
   $ ruby watcher.rb
 
 === Start web app.
 
-  $ ruby start.rb
+  $ ruby start.rb  #-> http://localhost:4567/
 
-http://localhost:4567/
+== デプロイ
 
+プロセスがデーモン化するので、一通りテストが成功してからやった方がいいと思う。
+
+=== kifutter.shの中身を、各自環境に合わせて書き換える
+
+主にAPP_DIRの場所等
+
+=== kifutter.shに実行権限を付与()
+
+  $ chmod +x kifutter.sh
+
+=== スクリプトを実行
+ 
+開始
+  $ sudo kifutter.sh start
+
+終了
+  $ sudo kifutter.sh stop
+
+リスタート
+  $ sudo kifutter.sh restart
