@@ -30,7 +30,7 @@ function start
     RETVAL=$?
 
     # watcher
-    ARGS="-I $LIBDIR -rdaemonize watcher.rb"
+    ARGS="-I $LIBDIR -rdaemonize $APP_DIR/watcher.rb"
     echo ruby $ARGS
     ruby $ARGS
 
