@@ -7,11 +7,12 @@ PORT=10000
 ENV=deployment
 LIBDIR="$APP_DIR"
 SERVER=webrick
+RACKUP=/usr/local/bin/rackup
 
 RETVAL=0
 
 # Gracefully exit if the rackup is missing.
-which rackup >/dev/null || exit 0
+# which rackup >/dev/null || exit 0
 
 # Go no further if config directory is missing.
 [ -d "$APP_DIR" ] || exit 0
@@ -25,8 +26,8 @@ function start
 
     # rackup
     ARGS="$LIBDIR/config.ru -s $SERVER -p $PORT -E $ENV -D -I $LIBDIR"
-    echo rackup $ARGS
-    rackup $ARGS
+    echo $RACKUP $ARGS
+    $RACKUP $ARGS
     RETVAL=$?
 
     # watcher
