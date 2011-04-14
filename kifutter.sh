@@ -7,6 +7,7 @@ PORT=10000
 ENV=deployment
 LIBDIR="$APP_DIR"
 SERVER=webrick
+RUBY=/usr/local/bin/ruby
 RACKUP=/usr/local/bin/rackup
 
 RETVAL=0
@@ -32,8 +33,8 @@ function start
 
     # watcher
     ARGS="-I $LIBDIR -rdaemonize $APP_DIR/watcher.rb"
-    echo ruby $ARGS
-    ruby $ARGS
+    echo $RUBY $ARGS
+    $RUBY $ARGS
 
     sleep 3
     if pgrep -f 'kifutter'
